@@ -56,5 +56,13 @@ class mainModel{
     
             return $stmt->fetch(PDO::FETCH_ASSOC); 
         }
-
+        public function editarUsuario($id,$nombre){
+            $usuario =$this->seleccionarUno($id);
+            $sql="UPDATE usuarios SET nombre =:nombre where id=:id";
+            $conection = $this->conectar();
+            $stmt = $conection->prepare($sql);
+            $stmt->bindParam(":nombre",$nombre);
+            $stmt->bindParam(":id",$id);
+            $stmt->execute();
+        }
 }

@@ -28,7 +28,7 @@
     </form>
     <?php
 
-     if($_SERVER['REQUEST_METHOD']==='POST'){
+     if($_SERVER['REQUEST_METHOD']==='POST'&&isset($_POST['password'])){
         $users->saveUser();
      }
     ?>
@@ -42,13 +42,24 @@
     <form action="" method="POST">
         <?php
            $users=new controllerMain(); 
+           if($_SERVER['REQUEST_METHOD']==='POST'&& isset($_POST['hidden2'])){
            $resultado = $users->getOneUser();
-           echo $resultado['nombre'];
+           echo $resultado['nombre'];}
         ?>
         <input type="hidden" name="hidden2">
 
         <input type="text" name="id">
         <input type="submit" value="buscar">
+    </form>
+            <?php
+             if($_SERVER['REQUEST_METHOD']==='POST'&& isset($_POST['seleccionId'])){
+                $resultado = $users->actualizarUser();
+                echo $resultado;}
+            ?>
+    <form action="" method="POST">
+        <input type="text" name="seleccionId">
+        <input type="text" name="nombreCambiar">
+    <input type="submit" value="cambiar">
     </form>
 
 </body>

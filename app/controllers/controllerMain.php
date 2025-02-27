@@ -6,8 +6,8 @@ use app\models\mainModel;
 class controllerMain extends mainModel {
 
     public function saveUser() {
+
         if(isset($_POST['nombre']) && isset($_POST['password']) && isset($_POST['email'])){
-      
             $nombre=$_POST['nombre'];
             $pass=$_POST['password'];
             $email=$_POST['email'];
@@ -33,6 +33,14 @@ class controllerMain extends mainModel {
         }
     }    
 
+    public function actualizarUser(){
+        if(isset($_POST['seleccionId'])){
+            $id=$_POST['seleccionId'];
+            $nombre=$_POST['nombreCambiar'];
+            $response= $this->editarUsuario($id,$nombre);
+            return $response;
+        }
+    }
 
 
 }
