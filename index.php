@@ -33,10 +33,11 @@
                  <button type="submit" name="vista" value="crearUser">Crear un usuario</button>
                 <button type="submit" name="vista" value="modificarUser">Modificar un usuario</button>
                  <button type="submit" name="vista" value="mostrarTodosUsers">Mostrar todos los Usuarios</button>
+                  <button type="submit" name="vista" value="eliminarUser">Eliminar un usuario</button>
                  </form>';
             
        
-                if(isset($_GET)&&$_GET['vista']!=""){
+                if(isset($_GET)&&isset($_GET['vista'])){
                     $vista = $_GET['vista'];
                     $vista=$viewsController->obtenerVistasController($vista);
                     require_once($vista);

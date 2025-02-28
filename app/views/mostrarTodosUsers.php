@@ -17,7 +17,7 @@
         foreach($resultado as $fila){
             echo 
             '<div class="nombre">'.
-                $fila['nombre'].'<br>'.
+              "ID: ". $fila['id']." Nombre: ". $fila['nombre'].'<br>'.
                 '</div>';
             }}
             ?>

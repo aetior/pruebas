@@ -89,7 +89,21 @@ class mainModel
         } else {
             print_r($storedPassword);
             echo "contraseña no correcta";
-            return true;
+            return false;
         }
+    }
+    public function eliminarUsuario($id){
+        $sql="DELETE FROM usuarios where id=:id";
+        $conection= $this->conectar();
+        $stmt = $conection->prepare($sql);
+        $stmt->bindParam(":id",$id);
+        
+
+        if($stmt->execute()){
+            echo"elimiando con exito";
+        }else{
+            echo"error al eliminar";
+        }
+
     }
 }

@@ -42,6 +42,11 @@ class controllerMain extends mainModel {
             return $response;
         }
     }
-
+    public function eliminarUser(){
+        if(isset($_POST['eliminarUser'])){
+            $id = $_POST['userId'];
+            return $this->eliminarUsuario($id);
+        }
+    }
 
 }
