@@ -22,7 +22,9 @@ session_start();
     }else{
    
    echo '<form action=""method="POST">
+        <label for="email">Email:</label>
         <input type="text" name="email">
+        <label for="pass">Contraseña:</label>
         <input type="text" name="pass">
         <input type="hidden" name="login" value="1">
         <input type="submit" value="Entrar">

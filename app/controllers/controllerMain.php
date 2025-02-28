@@ -11,7 +11,8 @@ class controllerMain extends mainModel {
             $nombre=$_POST['nombre'];
             $pass=$_POST['password'];
             $email=$_POST['email'];
-            $response = $this->guardar($nombre,$pass,$email);
+            $hashedPassword = password_hash($pass, PASSWORD_DEFAULT);
+            $response = $this->guardar($nombre,$hashedPassword,$email);
             return $response;
         }else{
             echo "faltan datos";

@@ -18,7 +18,7 @@
                 echo"inicio exitoso";
                 }else{
                     session_unset();
-                    print_r($permiso);
+                    // print_r($permiso);
                 echo"inicio fallido";
              
                 }
@@ -26,7 +26,5 @@
             }
 
         }
-        public function cerrarSession(){
-           }
 
     }

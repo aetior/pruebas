@@ -59,5 +59,5 @@
 
 
 </body>
-<script src="./app/script/script.js"></script>
+<!-- <script src="./app/script/script.js"></script> -->
 </html>
