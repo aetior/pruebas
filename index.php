@@ -2,6 +2,7 @@
      require_once "./config/app.php";
      require_once "./autoload.php";
      use app\controllers\controllerMain;
+    
 ?>
 
 <!DOCTYPE html>
@@ -14,32 +15,38 @@
 <body>
 
    
-          
 
-<form action="" method="GET">
-    <button type="submit" name="vista" value="buscarUsuario">Buscar un usuario</button>
-    <button type="submit" name="vista" value="crearUser">Crear un usuario</button>
-    <button type="submit" name="vista" value="modificarUser">Modificar un usuario</button>
-    <button type="submit" name="vista" value="mostrarTodosUsers">Mostrar todos los Usuarios</button>
-</form>
+
 
 <?php
 
         use app\controllers\viewsController;
         $viewsController= new viewsController();
                 
-        if(isset($_GET)&&$_GET['vista']!=""){
-            $vista = $_GET['vista'];
-            $vista=$viewsController->obtenerVistasController($vista);
-             print_r($vista);
-            require_once($vista);
+
+        include 'app/views/inicioSession.php';
+
+        if(isset( $_SESSION['newSession'])){
+            
+            echo '<form action="" method="GET">
+                <button type="submit" name="vista" value="buscarUsuario">Buscar un usuario</button>
+                 <button type="submit" name="vista" value="crearUser">Crear un usuario</button>
+                <button type="submit" name="vista" value="modificarUser">Modificar un usuario</button>
+                 <button type="submit" name="vista" value="mostrarTodosUsers">Mostrar todos los Usuarios</button>
+                 </form>';
+            
+       
+                if(isset($_GET)&&$_GET['vista']!=""){
+                    $vista = $_GET['vista'];
+                    $vista=$viewsController->obtenerVistasController($vista);
+                    require_once($vista);
 
 
-        }else{
-            $vista = './app/views/404.php';
-        }
-
-        
+                }else{
+                    $vista = './app/views/404.php';
+                }
+              
+ }
 
 ?>
 

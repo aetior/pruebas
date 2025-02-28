@@ -2,6 +2,7 @@
      require_once "./config/app.php";
      require_once "./autoload.php";
      use app\controllers\controllerMain;
+
 ?>
 </div>
     <form action="" method="POST">
@@ -9,12 +10,27 @@
         <input type="submit" value="Mostrar Todos los usuarios">
         <input type="button" value="Eliminar" id="botonEliminar">
     </form>
-    <div id="divNombres"><?php 
-    $users=new controllerMain(); 
+    <div id="divNombres">
+    <?php $users=new controllerMain(); 
     $resultado = $users->getUser();
- 
     if(!empty($resultado)){
-    foreach($resultado as $fila){
-        echo htmlspecialchars($fila['nombre']).'<br>';
-    }}
-    ?>
+        foreach($resultado as $fila){
+            echo 
+            '<div class="nombre">'.
+                $fila['nombre'].'<br>'.
+                '</div>';
+            }}
+            ?>
+               </div>
+
+<script>
+    let eliminarBtn = document.querySelector("#botonEliminar");
+let divNombres = document.querySelectorAll(".nombre");
+
+eliminarBtn.addEventListener('click',()=>{
+    divNombres.forEach(div =>{
+        div.textContent=""
+    })
+})
+
+</script>

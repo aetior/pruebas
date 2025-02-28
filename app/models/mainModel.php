@@ -65,4 +65,22 @@ class mainModel{
             $stmt->bindParam(":id",$id);
             $stmt->execute();
         }
+        public function validarUsuario($email, $password) {
+            $sql = "SELECT password FROM usuarios WHERE email = :email";
+            $conection = $this->conectar();
+            $stmt = $conection->prepare($sql);
+            $stmt->bindParam(":email", $email);
+            $stmt->execute();
+            
+            $storedPassword = $stmt->fetchColumn(); 
+        
+            if  ($storedPassword && $password === $storedPassword) {
+              
+                return true;
+            } else {
+                
+
+                return false; 
+            }
+        }
 }
