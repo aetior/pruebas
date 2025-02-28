@@ -12,55 +12,44 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="divNombres"><?php 
-    $users=new controllerMain(); 
-    $resultado = $users->getUser();
- 
-    if(!empty($resultado)){
-    foreach($resultado as $fila){
-        echo htmlspecialchars($fila['nombre']).'<br>';
-    }}
-    ?></div>
-    <form action="" method="POST">
-        <input type="hidden" name="hidden">
-        <input type="submit">
-        <input type="button" value="Eliminar" id="botonEliminar">
-    </form>
-    <?php
 
-     if($_SERVER['REQUEST_METHOD']==='POST'&&isset($_POST['password'])){
-        $users->saveUser();
-     }
-    ?>
+   
+          
 
-    <form action="" method="POST">
-        <input type="text" name="nombre">
-        <input type="text" name="password">
-        <input type="text" name="email">
-        <input type="submit" value="enviar">
-    </form>
-    <form action="" method="POST">
-        <?php
-           $users=new controllerMain(); 
-           if($_SERVER['REQUEST_METHOD']==='POST'&& isset($_POST['hidden2'])){
-           $resultado = $users->getOneUser();
-           echo $resultado['nombre'];}
-        ?>
-        <input type="hidden" name="hidden2">
+<form action="" method="GET">
+    <button type="submit" name="vista" value="buscarUsuario">Buscar un usuario</button>
+    <button type="submit" name="vista" value="crearUser">Crear un usuario</button>
+    <button type="submit" name="vista" value="modificarUser">Modificar un usuario</button>
+    <button type="submit" name="vista" value="mostrarTodosUsers">Mostrar todos los Usuarios</button>
+</form>
 
-        <input type="text" name="id">
-        <input type="submit" value="buscar">
-    </form>
-            <?php
-             if($_SERVER['REQUEST_METHOD']==='POST'&& isset($_POST['seleccionId'])){
-                $resultado = $users->actualizarUser();
-                echo $resultado;}
-            ?>
-    <form action="" method="POST">
-        <input type="text" name="seleccionId">
-        <input type="text" name="nombreCambiar">
-    <input type="submit" value="cambiar">
-    </form>
+<?php
+
+        use app\controllers\viewsController;
+        $viewsController= new viewsController();
+                
+        if(isset($_GET)&&$_GET['vista']!=""){
+            $vista = $_GET['vista'];
+            $vista=$viewsController->obtenerVistasController($vista);
+             print_r($vista);
+            require_once($vista);
+
+
+        }else{
+            $vista = './app/views/404.php';
+        }
+
+        
+
+?>
+
+
+
+
+
+
+
+
 
 </body>
 <script src="./app/script/script.js"></script>

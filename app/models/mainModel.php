@@ -1,6 +1,6 @@
 <?php
-
 namespace app\models;
+require_once "./autoload.php";
 use \PDO;
 
 if(file_exists(__DIR__."/../../config/server.php")){
