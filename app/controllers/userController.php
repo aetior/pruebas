@@ -13,9 +13,10 @@
                 $permiso = $this->validarUsuario($email,$contraseña);
                 
                 if($permiso){
-             
-                $_SESSION['newSession']="verdad";
-                echo"inicio exitoso";
+                $rol_user=$this->seleccionarUnoPorEmail($email);
+                $_SESSION['rol']=$rol_user['rol'];
+                echo"inicio exitoso ";
+      
                 }else{
                     session_unset();
                     // print_r($permiso);

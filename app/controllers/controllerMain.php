@@ -22,7 +22,8 @@ class controllerMain extends mainModel {
     public function getUser(){
        if (isset($_POST['hidden'])) {
             $response = $this->consultar();
-            return  $response;           
+          
+            return   $response;           
         }
     }
 

@@ -14,5 +14,5 @@
            $users=new controllerMain(); 
            if($_SERVER['REQUEST_METHOD']==='POST'&& isset($_POST['hidden2'])){
            $resultado = $users->getOneUser();
-           echo print_r($resultado);}
+           echo "El nombre es: ".$resultado['nombre']."<br> El rol es: ".$resultado['rol'];}
         ?>

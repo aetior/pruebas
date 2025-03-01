@@ -56,7 +56,12 @@ class mainModel
 
     public function seleccionarUno($id)
     {
-        $sql = "SELECT nombre FROM usuarios where id=:id";
+        $sql = 
+        "SELECT u.nombre, r.rol 
+        FROM usuarios u
+        JOIN roles r
+        ON u.id_rol = r.id_rol
+        where u.id=:id";
         $conection = $this->conectar();
         $stmt = $conection->prepare($sql);
         $stmt->bindParam(":id", $id);
@@ -86,6 +91,7 @@ class mainModel
 
         if (password_verify($password, $storedPassword)) {
             return true;
+
         } else {
             print_r($storedPassword);
             echo "contraseña no correcta";
@@ -105,5 +111,20 @@ class mainModel
             echo"error al eliminar";
         }
 
+    }
+    public function seleccionarUnoPorEmail($email)
+    {
+        $sql = 
+        "SELECT r.rol 
+        FROM usuarios u
+        JOIN roles r
+        ON u.id_rol = r.id_rol
+        where u.email=:email";
+        $conection = $this->conectar();
+        $stmt = $conection->prepare($sql);
+        $stmt->bindParam(":email", $email);
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 }

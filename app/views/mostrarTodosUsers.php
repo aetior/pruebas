@@ -8,7 +8,7 @@
     <form action="" method="POST">
         <input type="hidden" name="hidden">
         <input type="submit" value="Mostrar Todos los usuarios">
-        <input type="button" value="Eliminar" id="botonEliminar">
+        <input type="button" value="Cerrar" id="botonEliminar">
     </form>
     <div id="divNombres">
     <?php $users=new controllerMain(); 
