@@ -18,7 +18,7 @@ session_start();
         <input type="hidden" name="salir">
         <input type="submit" value="Salir">
         </form>';
-  
+  if(!isset($_SESSION['rol'])){
    echo '<form action=""method="POST">
         <label for="email">Email:</label>
         <input type="text" name="email">
@@ -27,14 +27,17 @@ session_start();
         <input type="hidden" name="login" value="1">
         <input type="submit" value="Entrar">
     </form>';
- 
+    }
     if(isset($_POST['login'])){
     $user = new Usercontroller();
         $user->comprobarUsuario();
+        header("Location: ".$_SERVER['PHP_SELF']); 
     }
     if(isset($_POST['salir'])){
         session_unset();
         session_destroy();
+        header("Location: ".$_SERVER['PHP_SELF']); 
+        exit;
     }
     ?>
 </body>
