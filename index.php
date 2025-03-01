@@ -38,6 +38,7 @@ use app\controllers\controllerMain;
                 <button type="submit" name="vista" value="modificarUser">Modificar un usuario</button>
                  <button type="submit" name="vista" value="mostrarTodosUsers">Mostrar todos los Usuarios</button>
                   <button type="submit" name="vista" value="eliminarUser">Eliminar un usuario</button>
+                  <button type="submit" name="vista" value="subirImg">Subir Imagen</button>
                  </form>';
 
 
@@ -52,9 +53,8 @@ use app\controllers\controllerMain;
             echo  $_SESSION['rol'];
             echo '<form action="" method="GET">
                 <button type="submit" name="vista" value="buscarUsuario">Buscar un usuario</button>
-          
-                 <button type="submit" name="vista" value="mostrarTodosUsers">Mostrar todos los Usuarios</button>
-                
+                  <button type="submit" name="vista" value="subirImg">Subir Imagen</button>          
+                 <button type="submit" name="vista" value="mostrarTodosUsers">Mostrar todos los Usuarios</button>               
                  </form>';
 
             if (isset($_GET) && isset($_GET['vista'])) {

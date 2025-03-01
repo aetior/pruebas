@@ -5,7 +5,7 @@
 
         protected function obtenerVistasModelo($vista){
 
-            $listaBlanca = ["crearUser","modificarUser","mostrarTodosUsers","buscarUsuario","eliminarUser"];
+            $listaBlanca = ["crearUser","modificarUser","mostrarTodosUsers","buscarUsuario","eliminarUser","subirImg"];
 
             if(in_array($vista, $listaBlanca)){
                     if(is_file("./app/views/".$vista.".php")){

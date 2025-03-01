@@ -19,7 +19,7 @@ class mainModel
     private $user = DB_USER;
     private $pass = DB_PASS;
 
-    protected function conectar()
+    public function conectar()
     {
         $conexion = new PDO("mysql:host=" . $this->server . ";dbname=" . $this->db, $this->user, $this->pass);
         return  $conexion;
@@ -115,7 +115,7 @@ class mainModel
     public function seleccionarUnoPorEmail($email)
     {
         $sql = 
-        "SELECT r.rol 
+        "SELECT r.rol,u.id 
         FROM usuarios u
         JOIN roles r
         ON u.id_rol = r.id_rol

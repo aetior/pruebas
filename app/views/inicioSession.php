@@ -13,11 +13,11 @@ session_start();
 </head>
 <body>
     <?php
-
+  if(isset($_SESSION['rol'])){
          echo'  <form action=""method="POST">
         <input type="hidden" name="salir">
         <input type="submit" value="Salir">
-        </form>';
+        </form>';}
   if(!isset($_SESSION['rol'])){
    echo '<form action=""method="POST">
         <label for="email">Email:</label>

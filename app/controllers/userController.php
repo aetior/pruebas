@@ -14,12 +14,13 @@
                 
                 if($permiso){
                 $rol_user=$this->seleccionarUnoPorEmail($email);
+                $_SESSION['id']=$rol_user['id'];
                 $_SESSION['rol']=$rol_user['rol'];
                 echo"inicio exitoso ";
-      
+                    
                 }else{
                     session_unset();
-                    // print_r($permiso);
+              
                 echo"inicio fallido";
              
                 }
